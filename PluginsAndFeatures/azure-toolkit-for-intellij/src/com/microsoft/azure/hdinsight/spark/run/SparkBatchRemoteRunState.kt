@@ -31,10 +31,9 @@ import com.intellij.execution.ui.ConsoleViewContentType
 import com.intellij.ide.BrowserUtil
 import com.microsoft.azure.hdinsight.common.HDInsightUtil
 import com.microsoft.azure.hdinsight.common.MessageInfoType
+import com.microsoft.azure.hdinsight.common.classifiedexception.*
 import com.microsoft.azure.hdinsight.spark.common.SparkSubmitModel
 import com.microsoft.intellij.hdinsight.messages.HDInsightBundle
-import java.io.PrintWriter
-import java.io.StringWriter
 import java.net.URI
 import java.util.*
 
@@ -63,16 +62,17 @@ open class SparkBatchRemoteRunState(val serverlessSparkSubmitModel: SparkSubmitM
                             MessageInfoType.Hyperlink ->
                                 BrowserUtil.browse(URI.create(messageWithType.value))
                             else ->
+                            {
                                 consoleView!!.print("ERROR: ${messageWithType.value}\n", ConsoleViewContentType.ERROR_OUTPUT)
+                                ClassifiedExceptionGenerator.createClassifiedException(null, messageWithType.value)?.logStackTrace()
+                            }
                         }
                     },
                     { err ->
-                        val errWriter = StringWriter()
-                        err.printStackTrace(PrintWriter(errWriter))
+                        val classifiedExp = ClassifiedExceptionGenerator.createClassifiedException(err, null)
+                        classifiedExp?.logStackTrace()
 
-                        val errMessage = Optional.ofNullable(err.message)
-                                .orElse(err.toString()) + "\n stack trace: " + errWriter.buffer.toString()
-
+                        val errMessage = (classifiedExp?.message) ?: EmptyLog
                         createAppInsightEvent(it, mapOf(
                                 "IsSubmitSucceed" to "false",
                                 "SubmitFailedReason" to HDInsightUtil.normalizeTelemetryMessage(errMessage)))

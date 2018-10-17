@@ -32,7 +32,7 @@ class SparkJobDebugAction
     : SparkRunConfigurationAction(
         "SparkJobDebug",
         "Submit Spark Application to remote cluster with debugging support",
-        StreamUtil.getImageResourceFile("/icons/ToolWindowSparkJobDebug.png")?: AllIcons.Toolwindows.ToolWindowDebugger) {
+        StreamUtil.getImageResourceFile("/icons/ToolWindowSparkJobDebug_13x.png")?: AllIcons.Toolwindows.ToolWindowDebugger) {
     override val runExecutor: Executor
         get() = ExecutorRegistry.getInstance().getExecutorById(EXECUTOR_ID)
 }

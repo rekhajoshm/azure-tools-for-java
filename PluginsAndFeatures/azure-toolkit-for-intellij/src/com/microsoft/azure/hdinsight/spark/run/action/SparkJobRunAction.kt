@@ -32,7 +32,7 @@ class SparkJobRunAction
     : SparkRunConfigurationAction(
         "SparkJobRun",
         "Submit Spark Application to remote cluster",
-        StreamUtil.getImageResourceFile("/icons/ToolWindowSparkJobRun.png")?: AllIcons.Actions.Upload) {
+        StreamUtil.getImageResourceFile("/icons/ToolWindowSparkJobRun_13x.png")?: AllIcons.Actions.Upload) {
 
     override val runExecutor: Executor
         get() = ExecutorRegistry.getInstance().getExecutorById(EXECUTOR_ID)

@@ -25,7 +25,7 @@ public class CommonConst {
     public static final String ProductIConPath = "/icons/Product.png";
     public static final String RefreshIConPath = "/icons/Refresh.png";
     public static final String BlobFileIConPath = "/icons/BlobFile.png";
-    public static final String HDExplorerIconPath = "HdExplorer.png";
+    public static final String HDExplorerIconPath = "HdExplorer_16x.png";
     public static final String HDInsightIConPath = "HdInsight.png";
     public static final String HDInsightGrayIconPath = "HdInsight_gray.png";
     public static final String ClusterIConPath = "Cluster.png";
@@ -43,7 +43,7 @@ public class CommonConst {
     public static final String EmualtorPath = "/emulator/";
     public static final String EmulatorArchieveFileName = "service.zip";
     public static final String EmulatorSetupScriptFileName = "setup.sh";
-    public static final String SparkFailureTaskDebugIconPath = "/icons/ToolWindowSparkJobDebug.png";
+    public static final String SparkFailureTaskDebugIconPath = "/icons/ToolWindowSparkJobDebug_13x.png";
 
     public static final String HDINSIGHT_ADDITIONAL_CLUSTERS = "com.microsoft.azure.hdinsight.AdditionalClusters";
     public static final String HDINSIGHT_LIVY_LINK_CLUSTERS = "com.microsoft.azure.hdinsight.LivyLinkClusters";
